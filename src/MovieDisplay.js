@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
+import styled from 'styled-components'
 
+const DisplayMovieDatacontainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+const ImageContainer = styled.div`
+  max-width: 400px;
+  height: auto;
+  padding: 20px;
+
+`
+const DataContainer = styled.div`
+  max-width: auto;
+`
+const MovieImage = styled.img`
+box-shadow: 0px 0px 20px black;
+`
+const MovieTextData = styled.p`
+font-weight: bold;
+`
+const MovieTextDataPlot = styled.p`
+`
 
 function MovieDisplay({ movie }) {
 
@@ -23,17 +45,20 @@ function MovieDisplay({ movie }) {
     } else {
         return (
             <>
-                <div className="displayMovieDatacontainer">
-                    <div className="imageContainer">
-                        <img className="movieImage" src={movie[movieIndex].poster} alt="movieImage" />
-                    </div>
-                    <div key={movie.movieID} className="dataContainer">
-                        <p>{movie[movieIndex].title}</p>
-                        <p>{movie[movieIndex].year}</p>
-                        <p>{movie[movieIndex].director}</p>
-                        <p>{movie[movieIndex].actors}</p>
-                    </div>
-                </div>
+                <DisplayMovieDatacontainer>
+                    <ImageContainer>
+                        <MovieImage src={movie[movieIndex].poster} alt="movieImage" />
+                    </ImageContainer>
+                    <DataContainer key={movie.movieID}>
+                        <MovieTextData>{movie[movieIndex].title}</MovieTextData>
+                        <MovieTextData>Year: {movie[movieIndex].year}</MovieTextData>
+                        <MovieTextData>Director: {movie[movieIndex].director}</MovieTextData>
+                        <MovieTextData>Actors: {movie[movieIndex].actors}</MovieTextData>
+                        <MovieTextData>Metascore: {movie[movieIndex].metascore}</MovieTextData>
+                        <MovieTextData>IMDB score: {movie[movieIndex].imdbRating}</MovieTextData>
+                        <MovieTextDataPlot>Plot: {movie[movieIndex].plot}</MovieTextDataPlot>
+                    </DataContainer>
+                </DisplayMovieDatacontainer>
             </>
         );
     }

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import MovieList from './MovieList'
@@ -25,8 +25,6 @@ const Search = styled.div`
   padding-inline: 5px;
 `
 
-
-
 function App() {
   const [movieData, setMovieData] = useState([])
   const [searchedMovieData, setSearchedMovieData] = useState([])
@@ -45,6 +43,7 @@ function App() {
   }
 
   return (
+
     <>
       <Header>GMDB</Header>
       <HomeBar>
@@ -62,6 +61,7 @@ function App() {
         <Route path='/id/:idnumber' element={<MovieDisplay movie={movieData} />} />
       </Routes>
     </>
+
   );
 }
 
