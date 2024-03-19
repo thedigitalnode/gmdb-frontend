@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 const MovieListContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
+justify-content: space-evenly;
+margin-top: 30px;
+
 `
 
 const MovieItem = styled.div`
@@ -16,6 +19,7 @@ const MovieImage = styled.img`
 max-width: 100%;
 height: auto;
 width: 300px;
+box-shadow: 0px 0px 20px black;
 `
 
 const MovieList = ({ movies }) => {

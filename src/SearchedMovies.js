@@ -18,7 +18,7 @@ height: auto;
 width: 300px;
 `
 
-function MovieDisplay({ searchedQuery }) {
+function MovieDisplay({ searchedQuery, authorized }) {
   const [searchedMovieList, setSearchedMovieList] = useState()
 
   useEffect(() => {
@@ -31,8 +31,10 @@ function MovieDisplay({ searchedQuery }) {
     return (
       <h1>Go home and select a movie</h1>
     )
-  } else {
-    console.log(searchedMovieList)
+  } else if (!authorized) {
+    return <h1>Please Login to Search</h1>
+  }
+  else {
     return (
 
       <MovieListContainer>

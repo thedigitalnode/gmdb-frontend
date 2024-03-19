@@ -17,6 +17,9 @@ const DataContainer = styled.div`
 `
 const MovieImage = styled.img`
 box-shadow: 0px 0px 20px black;
+max-width: 100%;
+height: auto;
+width: auto;
 `
 const MovieTextData = styled.p`
 font-weight: bold;
@@ -24,7 +27,7 @@ font-weight: bold;
 const MovieTextDataPlot = styled.p`
 `
 
-function MovieDisplay({ movie }) {
+function MovieDisplay({ movie, authorized }) {
 
     const { idnumber } = useParams();
     const [movieIndex, setMovieIndex] = useState(0)
@@ -42,6 +45,8 @@ function MovieDisplay({ movie }) {
         return (
             <h1>Go home and select a movie</h1>
         )
+    } else if (!authorized){
+        return <h1>Please Login to View Movie Details</h1>
     } else {
         return (
             <>
